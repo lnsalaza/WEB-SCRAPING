@@ -8,17 +8,23 @@ import { FooterComponent } from './components/footer/footer.component';
 import { Question3Component } from './pages/question3/question3.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 
+//PARSER
+import { NgxCsvParserModule } from 'ngx-csv-parser';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
     Question3Component,
-    PrincipalComponent
+    PrincipalComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxCsvParserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { NgxCsvParser } from 'ngx-csv-parser';
+import { NgxCSVParserError } from 'ngx-csv-parser';
 
 @Component({
   selector: 'app-question3',
@@ -8,18 +11,56 @@ import { Component, OnInit } from '@angular/core';
 export class Question3Component implements OnInit {
 
   answer:any = {
-    title: "Sit esse qui enim ipsum eiusmod ad quis exercitation.",
-    image: "Dolor nulla aute voluptate enim dolore ad laborum sint ut ipsum do ut.",
-    description: "Cillum anim esse minim Lorem excepteur est labore deserunt sint occaecat consectetur deserunt ipsum. Est fugiat tempor consectetur dolore minim ullamco enim Lorem exercitation elit. Consequat deserunt mollit labore ut eu irure Lorem sunt veniam deserunt aliquip pariatur nulla et. Dolor fugiat excepteur velit labore consequat adipisicing esse velit aliquip incididunt duis. Enim duis exercitation officia irure Lorem laborum qui.",
-    cost: 100,
-    bathroom: 2,
-    room: 3,
-    area: 150
+    title: "",
+    image: "",
+    cost: "",
+    bathroom: "",
+    room: "",
+    area: ""
   }
 
-  constructor() { }
+  
+
 
   ngOnInit(): void {
+    
+    
+    
   }
+
+  csvRecords: any;;
+  header: boolean = true;
+
+  constructor(private ngxCsvParser: NgxCsvParser) {
+  }
+
+  @ViewChild('fileImportInput') fileImportInput: any;
+
+  fileChangeListener($event: any): void {
+
+    const files = $event.srcElement.files;
+    this.header = (this.header as unknown as string) === 'true' || this.header === true;
+
+    this.ngxCsvParser.parse(files[0], { header: this.header, delimiter: ',', encoding: 'utf8' })
+      .pipe().subscribe({
+        next: (result): void => {
+          
+          this.csvRecords = result;
+        },
+        error: (error: NgxCSVParserError): void => {
+          console.log('Error', error);
+        }
+      });
+
+      
+  }
+
+  startAnalisis(){
+
+    console.log(this.csvRecords);
+    
+    
+  }
+  
 
 }

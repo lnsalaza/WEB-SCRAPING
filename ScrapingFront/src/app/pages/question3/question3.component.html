@@ -8,8 +8,19 @@
   
       <div class="row mx-5 mt-5 mb-2">
         <div class="col">
-          <span class="fs-2 fw-bold">¿Cuál es el espacio en renta más caro en Samborondón?</span>
+          <span class="fs-2 fw-bold">¿Cuál es el espacio en renta más caro en Samborondón?<span class="badge bg-secondary ms-2">Requiere icasas.csv</span></span>
         </div>
+      </div>
+
+      <div class="row mx-5">
+        <div class="col-4">
+          <div class="input-group">
+          
+            <input (change)="fileChangeListener($event)" type="file" #fileImportInput accept=".csv" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon" aria-label="Upload">
+            <button (click)="startAnalisis()" class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon">Cargar</button>
+          </div>
+        </div>
+        
       </div>
   
       <div class="row mx-5">
@@ -28,7 +39,7 @@
             </div>
 
             <div class="col-6">
-              
+
               <span class="">
                 {{answer.cost}}
               </span>
