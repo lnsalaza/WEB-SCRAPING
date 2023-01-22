@@ -3,13 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "scraping-front": {
+    "ScrapingFront": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -31,6 +27,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
@@ -71,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "scraping-front:build:production"
+              "browserTarget": "ScrapingFront:build:production"
             },
             "development": {
-              "browserTarget": "scraping-front:build:development"
+              "browserTarget": "ScrapingFront:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "scraping-front:build"
+            "browserTarget": "ScrapingFront:build"
           }
         },
         "test": {
@@ -105,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "scraping-front"
+  "cli": {
+    "analytics": false
+  }
 }
