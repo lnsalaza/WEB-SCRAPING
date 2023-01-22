@@ -22,57 +22,80 @@
         </div>
         
       </div>
-  
-      <div class="row mx-5">
-        <div class="col">
-            <span class="fs-2 fw-bold">{{answer.title}}</span>
+      <ng-container *ngIf="this.control">
+        <div class="row mx-5 pt-5">
+          <div class="col">
+              <span class="fs-2 fw-bold">{{answer.TITULO}}</span>
+          </div>
         </div>
-      </div>
 
-      <div class="row mx-5">
-        <div class="col">
+        <div class="row mx-5 mt-3">
+          <div class="col">
 
-
-          <div class="row">
-            <div class="col-6">
-              <img src="{{answer.image}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-            </div>
-
-            <div class="col-6">
-
-              <span class="">
-                {{answer.cost}}
-              </span>
-              <span class="">
-                {{answer.area}}
-              </span>
-
-              <span class="">
-                {{answer.bathroom}}
-              </span>
-
-              <span class="">
-                {{answer.room}}
-              </span>
-            </div>
 
             <div class="row">
-              <div class="col">
-                <span>
-                  {{answer.description}}
-                </span>
+              <div class="col-6">
+                <img src="{{answer.IMAGEN}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
               </div>
-            </div>
+
+              <div class="col-6 ">
 
 
+                <div class="row">
+                
+                  
+                  <span class="fs-4 fw-bold">
+                    <fa-icon [icon]="['fas', 'dollar']"></fa-icon> {{answer.PRECIO}}
+                  </span>
+                </div>
 
-          </div> 
+
+                <div class="row">
+                  <span class="">
+                    <fa-icon [icon]="['fas', 'home']"></fa-icon> Area: {{answer.AREA}} 
+                  </span>
+                </div>
+                
+                <div class="row">
+                  <span class="">
+                    <fa-icon [icon]="['fas', 'bath']"></fa-icon>  Baños: {{answer.BANIO}}  
+                  </span>
+                </div>
+
+                <div class="row">
+                  <span class="">
+                    <fa-icon [icon]="['fas', 'door-closed']"></fa-icon> Habitaciones: {{answer.HABITACIONES}} 
+                  </span>
+                </div>
+
+                <div class="row">
+                  <span class="">
+                    <fa-icon [icon]="['fas', 'globe']"></fa-icon> Url: <a href="{{answer.LINK}} "> {{answer.LINK}} </a> 
+                  </span>
+                </div>
+
+              </div>
+              
+              <div class="divider mt-5 mb-3"></div>
+
+
+              <div class="row my-5">
+                <div class="col-12 text-center">
+                  <span>{{answer.DESCRIPCION}}</span>
+                  
+                </div>
+              </div>
+
+
+              <div class="divider mt-3"></div>
+              
+            </div> 
+
+          </div>
+
 
         </div>
-
-
-      </div>
-
+      </ng-container>
       
   
     </div>

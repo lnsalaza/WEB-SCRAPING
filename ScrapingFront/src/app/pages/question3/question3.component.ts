@@ -10,16 +10,9 @@ import { NgxCSVParserError } from 'ngx-csv-parser';
 })
 export class Question3Component implements OnInit {
 
-  answer:any = {
-    title: "",
-    image: "",
-    cost: "",
-    bathroom: "",
-    room: "",
-    area: ""
-  }
-
+  answer:any = {}
   
+  control = false;
 
 
   ngOnInit(): void {
@@ -32,8 +25,10 @@ export class Question3Component implements OnInit {
   header: boolean = true;
 
   constructor(private ngxCsvParser: NgxCsvParser) {
+   
+    
   }
-
+  
   @ViewChild('fileImportInput') fileImportInput: any;
 
   fileChangeListener($event: any): void {
@@ -57,10 +52,22 @@ export class Question3Component implements OnInit {
 
   startAnalisis(){
 
-    console.log(this.csvRecords);
     
-    
+    let result = this.csvRecords.filter( (x: { TITULO: String; }) => x.TITULO.includes('Samborondón'))
+    this.answer = this.getMax(result, "PRECIO")
+    console.log(this.answer);
+    this.control = true;
   }
   
+  getMax(arr:any, key:any) {
+    var max;
+    for (var i=0 ; i<arr.length ; i++) {
+        if (max == null || parseInt(arr[i][key]) > parseInt(max[key]))
+            max = arr[i];
+    }
+    return max;
+  }
+
+
 
 }

@@ -10,6 +10,8 @@ import { PrincipalComponent } from './pages/principal/principal.component';
 
 //PARSER
 import { NgxCsvParserModule } from 'ngx-csv-parser';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 
 @NgModule({
@@ -24,9 +26,16 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxCsvParserModule
+    NgxCsvParserModule,
+    FontAwesomeModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
+  }
+  
+}
