@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { Question7Component } from './pages/question7/question7.component';
 import { Question3Component } from './pages/question3/question3.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 
@@ -14,6 +15,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
     FooterComponent,
     Question3Component,
     PrincipalComponent,
+    Question7Component,
     
   ],
   imports: [
