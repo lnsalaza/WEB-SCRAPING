@@ -126,7 +126,7 @@ export class Question4Component implements OnInit {
         ]
       },
       options: {
-        aspectRatio:2,
+        aspectRatio:2.5,
       }
     });
   }
