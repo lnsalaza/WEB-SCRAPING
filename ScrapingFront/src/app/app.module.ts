@@ -10,6 +10,7 @@ import { PrincipalComponent } from './pages/principal/principal.component';
 
 //PARSER
 import { NgxCsvParserModule } from 'ngx-csv-parser';
+import { Question4Component } from './pages/question4/question4.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
     FooterComponent,
     Question3Component,
     PrincipalComponent,
+    Question4Component,
     
   ],
   imports: [
