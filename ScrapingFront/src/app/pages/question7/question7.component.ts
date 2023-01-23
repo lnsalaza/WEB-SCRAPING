@@ -1,36 +1,21 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
 import { NgxCsvParser } from 'ngx-csv-parser';
 import { NgxCSVParserError } from 'ngx-csv-parser';
-
 @Component({
-  selector: 'app-question3',
-  templateUrl: './question3.component.html',
-  styleUrls: ['./question3.component.css']
+  selector: 'app-question7',
+  templateUrl: './question7.component.html',
+  styleUrls: ['./question7.component.css']
 })
-export class Question3Component implements OnInit {
-
+export class Question7Component implements OnInit {
   answer:any = {}
-  
   control = false;
-
-
-  ngOnInit(): void {
-    
-    
-    
-  }
-
   csvRecords: any;;
   header: boolean = true;
 
-  constructor(private ngxCsvParser: NgxCsvParser) {
-   
-    
-  }
-  
+  constructor(private ngxCsvParser: NgxCsvParser) { }
   @ViewChild('fileImportInput') fileImportInput: any;
-
+  ngOnInit(): void {
+  }
   fileChangeListener($event: any): void {
 
     const files = $event.srcElement.files;
@@ -46,19 +31,13 @@ export class Question3Component implements OnInit {
           console.log('Error', error);
         }
       });
-
-      
   }
-
-  startAnalisis(){
-
-    
-    let result = this.csvRecords.filter( (x: { TITULO: String; }) => x.TITULO.includes('Samborondón'))
-    this.answer = this.getMax(result, "PRECIO")
+   startAnalisis(){
+    let result = this.csvRecords.filter( (x: { DESCRIPCION: String; }) => x.DESCRIPCION.includes('Sierra'))
+    this.answer = this.getMax(result, "precio")
     console.log(this.answer);
     this.control = true;
   }
-  
   getMax(arr:any, key:any) {
     var max;
     for (var i=0 ; i<arr.length ; i++) {
@@ -67,7 +46,4 @@ export class Question3Component implements OnInit {
     }
     return max;
   }
-
-
-
 }

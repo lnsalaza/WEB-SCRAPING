@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { Question7Component } from './pages/question7/question7.component';
 import { Question3Component } from './pages/question3/question3.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 
 //PARSER
 import { NgxCsvParserModule } from 'ngx-csv-parser';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
 import { Question4Component } from './pages/question4/question4.component';
 
 
@@ -20,15 +24,23 @@ import { Question4Component } from './pages/question4/question4.component';
     FooterComponent,
     Question3Component,
     PrincipalComponent,
+    Question7Component,
     Question4Component,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxCsvParserModule
+    NgxCsvParserModule,
+    FontAwesomeModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
+  }
+  
+}
