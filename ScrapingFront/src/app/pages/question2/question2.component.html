@@ -1,0 +1,66 @@
+<header>
+    <app-navbar></app-navbar>
+  </header>
+  
+  
+  
+    <div class="container-full h-100">
+  
+      <div class="row mx-5 mt-5 mb-2">
+        <div class="col">
+          <span class="fs-2 fw-bold">¿Qué ciudad entre Guayaquil y Samborondón tiene mayor cantidad de baños en sus casas en renta?<span class="badge bg-secondary ms-2">Requiere icasas.csv</span></span>
+        </div>
+      </div>
+
+      <div class="row mx-5">
+        <div class="col-4">
+          <div class="input-group">
+          
+            <input (change)="fileChangeListener($event)" type="file" #fileImportInput accept=".csv" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon" aria-label="Upload">
+            <button (click)="startAnalisis()" class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon">Cargar</button>
+          </div>
+        </div>
+        
+      </div>
+      <ng-container *ngIf="control">
+
+        <div class="row mx-5 mt-3">
+          <div class="col">
+
+
+            <div class="row">
+              <div class="col-6">
+                <img src="{{answer.imagen}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+              </div>
+
+              <div class="col-6 ">
+
+                <div class="row">
+                    <span class="fs-2">La ciudad que ofrece más cantidad de baño en sus casas es: <b>{{answer.nombre}}</b></span>
+                  </div>
+
+                <div class="row mt-5 text-center">
+                  <span class="fs-2 fw-bold">
+                   Con una cantidad de {{answer.banios}} baños promedio por casa.
+                  </span>
+                </div>
+                
+                
+
+              </div>
+              
+            
+              
+            </div> 
+
+          </div>
+
+
+        </div>
+      </ng-container>
+      
+  
+    </div>
+  
+    
+  <app-footer></app-footer>
