@@ -6,7 +6,7 @@
 
 	<div class="row mx-5 mt-5 mb-2">
 		<div class="col">
-			<span class="fs-2 fw-bold">¿Qué ciudad entre todas las ciudades del Ecuador tiene el menor promedio de costos arrendatarios?<span class="badge bg-secondary ms-2">Requiere propreratiAlquiler.csv</span></span>
+			<span class="fs-2 fw-bold">¿Cuál de las ciudades principales del Ecuador (Guayaquil, Quito y Cuenca) tiene el mayor promedio de costos arrendatarios?<span class="badge bg-secondary ms-2">Requiere propreratiAlquiler.csv</span></span>
 		</div>
 	</div>
 
@@ -21,11 +21,10 @@
 	</div>
 
 
-	<div class="row mx-5 align-items-center" *ngIf="listo">
-
+	<div class="row mx-5 align-items-center text-center " *ngIf="listo">
 		<div class="col">
 
-			<div class="row text-center  justify-content-center">
+			<div class="row justify-content-center">
 				<div class="col-6">
 					<span class="fs-1">
 						{{answer.ciudad}}
@@ -33,10 +32,10 @@
 				</div>
 			</div>
 			
-			<div class="row text-center  justify-content-center">
+			<div class="row justify-content-center">
 				<div class="col-6">
 					<span class="fs-2">
-						Promedio de ${{answer.tasa}}
+						Promedio de ${{answer.promedio}}
 					</span>
 				</div>
 			</div>

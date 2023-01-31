@@ -17,6 +17,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Question4Component } from './pages/question4/question4.component';
 import { Question1Component } from './pages/question1/question1.component';
 import { Question2Component } from './pages/question2/question2.component';
+import { Question5Component } from './pages/question5/question5.component';
+import { Question6Component } from './pages/question6/question6.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { Question2Component } from './pages/question2/question2.component';
     Question4Component,
     Question1Component,
     Question2Component,
+    Question5Component,
+    Question6Component,
   ],
   imports: [
     BrowserModule,

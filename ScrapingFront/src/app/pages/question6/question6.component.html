@@ -6,7 +6,7 @@
 
 	<div class="row mx-5 mt-5 mb-2">
 		<div class="col">
-			<span class="fs-2 fw-bold">¿Qué ciudad entre todas las ciudades del Ecuador tiene el menor promedio de costos arrendatarios?<span class="badge bg-secondary ms-2">Requiere propreratiAlquiler.csv</span></span>
+			<span class="fs-2 fw-bold">¿Qué ciudad del Ecuador tiene la venta de casas más baratas en función del número de habitaciones?<span class="badge bg-secondary ms-2">Requiere propreratiVenta.csv</span></span>
 		</div>
 	</div>
 
@@ -21,22 +21,25 @@
 	</div>
 
 
-	<div class="row mx-5 align-items-center" *ngIf="listo">
+	<div class="row mx-5 align-items-center text-center " *ngIf="listo">
+        <div class="col-3">
+            <fa-icon [icon]="['fas', 'chart-line']" style="font-size: 15vh;"></fa-icon> 
+        </div>
 
 		<div class="col">
 
-			<div class="row text-center  justify-content-center">
-				<div class="col-6">
+			<div class="row justify-content-center">
+				<div class="col">
 					<span class="fs-1">
 						{{answer.ciudad}}
 					</span>
 				</div>
 			</div>
 			
-			<div class="row text-center  justify-content-center">
-				<div class="col-6">
+			<div class="row justify-content-center">
+				<div class="col">
 					<span class="fs-2">
-						Promedio de ${{answer.tasa}}
+						Promedio de ${{answer.promedio}} por habitaciones.
 					</span>
 				</div>
 			</div>
@@ -45,9 +48,7 @@
 
 	</div>
 
-	<div class="row mx-5 align-items-center">
-		<canvas id="Chart" >{{ chart }}</canvas>
-	</div>
+	
 
 </div>
 

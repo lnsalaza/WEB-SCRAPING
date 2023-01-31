@@ -1,23 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
-import { Chart, Colors } from 'chart.js/auto';
-
-
 
 @Component({
-  selector: 'app-question4',
-  templateUrl: './question4.component.html',
-  styleUrls: ['./question4.component.css']
+  selector: 'app-question6',
+  templateUrl: './question6.component.html',
+  styleUrls: ['./question6.component.css']
 })
-export class Question4Component implements OnInit {
-
+export class Question6Component implements OnInit {
 
   answer:any;
   csvRecords: Array<any> = [];
   header: boolean = true;
   listo : boolean = false;
-
-  public chart: any;
 
   constructor(private ngxCsvParser: NgxCsvParser) { }
 
@@ -42,24 +36,14 @@ export class Question4Component implements OnInit {
   }
 
   startAnalisis(){
-
-    if (this.chart) {
-      this.chart.destroy();
-    }
     let ciudades = this.obtenerCiudades();
-
-    let tasaPorCiudad = this.calcularTasaPorCiudad(ciudades);
-    this.answer = this.obtenerMenorTasa(tasaPorCiudad)
+    let promediosXciudad = this.calcularpromedioPorCiudad(ciudades);
+    
+    this.answer = this.obtenerMenorPromedio(promediosXciudad);
     this.listo = true;
 
-    let tasas:Array<number> = [];
-    tasaPorCiudad.forEach(analisis => {
-      tasas.push(analisis.tasa);
-    })
+  
 
-    this.createChart(ciudades, tasas)
-    
-    
   }
 
   obtenerCiudades(){
@@ -74,61 +58,43 @@ export class Question4Component implements OnInit {
     return ciudades;
   }
 
-  calcularTasaPorCiudad(ciudades:Array<any>){
+  calcularpromedioPorCiudad(ciudades:Array<any>){
     let analisis: Array<any> = [];
     ciudades.forEach(ciudad => {
       let precioTotal = 0;
       let nullPrice = 0;
 
+
       this.csvRecords.forEach(casa => {
-        if (casa.precio && casa.localización && (casa.localización.indexOf(ciudad)!= -1)){
-          precioTotal += parseInt(casa.precio.split(' ')[1].replace('.', ''));
+        if (casa.precio && casa.detalles.includes('habitaciones') && casa.localización.includes(ciudad)){
+          let precio = parseInt(casa.precio.split(' ')[1].replace('.', ''));
+          let habitaciones = parseInt(casa.detalles.split('/')[0]);
+          precioTotal += (precio/habitaciones);
         } else {
           nullPrice++
         }
       });
       
-      let tasa = Math.round(precioTotal/(this.csvRecords.length-nullPrice));
+      let promedio = Math.round(precioTotal/(this.csvRecords.length-nullPrice));
+      
       analisis.push({
         ciudad : ciudad,
-        tasa : tasa
+        promedio : promedio
       });
+
     });
 
     return analisis;
   }
 
-  obtenerMenorTasa(tasaPorCiudad : Array<any>){
-    let menorTasa:any = tasaPorCiudad[0]
-
-    tasaPorCiudad.forEach(ciudad => {
-      if (ciudad.tasa < menorTasa.tasa) {
-        menorTasa = ciudad;
+  obtenerMenorPromedio(promedioPorCiudad : Array<any>){
+    let menorPromedio:any = promedioPorCiudad[0]
+    promedioPorCiudad.forEach(ciudad => {
+      if (parseInt(ciudad.promedio ) < parseInt(menorPromedio.promedio)) {
+        menorPromedio = ciudad;
       }
     });
-
-    return menorTasa;
+    return menorPromedio;
   }
 
-  //, tasas:Array<any>
-  createChart(ciudades:Array<any>, tasas:Array<any>){
-
-    this.chart = new Chart("Chart", {
-      type: 'bar', //this denotes tha type of chart
-
-      data: {// values on X-Axis
-        labels: ciudades, 
-	       datasets: [
-          {
-            label: 'Promedio',
-            data: tasas
-          },  
-        ]
-      },
-      options: {
-        aspectRatio:3,
-      }
-    });
-  }
-  
 }
