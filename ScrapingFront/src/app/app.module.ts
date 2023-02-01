@@ -19,6 +19,8 @@ import { Question1Component } from './pages/question1/question1.component';
 import { Question2Component } from './pages/question2/question2.component';
 import { Question5Component } from './pages/question5/question5.component';
 import { Question6Component } from './pages/question6/question6.component';
+import { Question9Component } from './pages/question9/question9.component';
+import { Question8Component } from './pages/question8/question8.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { Question6Component } from './pages/question6/question6.component';
     Question2Component,
     Question5Component,
     Question6Component,
+    Question9Component,
+    Question8Component,
   ],
   imports: [
     BrowserModule,

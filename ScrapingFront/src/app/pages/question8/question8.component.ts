@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgxCsvParser } from 'ngx-csv-parser';
 import { NgxCSVParserError } from 'ngx-csv-parser';
+
 @Component({
-  selector: 'app-question7',
-  templateUrl: './question7.component.html',
-  styleUrls: ['./question7.component.css']
+  selector: 'app-question8',
+  templateUrl: './question8.component.html',
+  styleUrls: ['./question8.component.css']
 })
-export class Question7Component implements OnInit {
+export class Question8Component implements OnInit {
   answer:any = {}
   control = false;
   csvRecords: any;;
@@ -35,16 +36,17 @@ export class Question7Component implements OnInit {
   }
 
    startAnalisis(){
-    let result = this.csvRecords.filter( (x: { DESCRIPCION: String; }) => x.DESCRIPCION.includes('Pichincha'))
-    this.answer = this.getMax(result, "PRECIO")
+    let result = this.csvRecords.filter( (x: { DESCRIPCION: String; }) => x.DESCRIPCION.includes('Ecuador'))
+    let result1 = result.filter((x: { TITULO: String; }) => x.TITULO.includes('alquiler'))
+    this.answer = this.getMin(result1, "PRECIO")
     console.log(this.answer);
     this.control = true;
   }
 
-  getMax(arr:any, key:any) {
+  getMin(arr:any, key:any) {
     var max;
     for (var i=0 ; i<arr.length ; i++) {
-        if (max == null || parseInt(arr[i][key]) > parseInt(max[key]))
+        if (max == null || parseInt(arr[i][key]) < parseInt(max[key]))
             max = arr[i];
     }
     return max;

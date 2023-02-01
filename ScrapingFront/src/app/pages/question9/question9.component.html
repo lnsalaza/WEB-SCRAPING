@@ -1,0 +1,98 @@
+<header>
+    <app-navbar></app-navbar>
+  </header>
+  
+  
+  
+    <div class="container-full h-100">
+  
+      <div class="row mx-5 mt-5 mb-2">
+        <div class="col">
+          <span class="fs-2 fw-bold">¿Cuál es el espacio en venta más amplio en Guayaquil?<span class="badge bg-secondary ms-2">Requiere inmobiliaria.csv</span></span>
+        </div>
+      </div>
+  
+      <div class="row mx-5">
+        <div class="col-4">
+          <div class="input-group">
+          
+            <input (change)="fileChangeListener($event)" type="file" #fileImportInput accept=".csv" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon" aria-label="Upload">
+            <button (click)="startAnalisis()" class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon">Cargar</button>
+          </div>
+        </div>
+        
+      </div>
+      <ng-container *ngIf="this.control">
+        <div class="row mx-5 pt-5">
+          <div class="col">
+              <span class="fs-2 fw-bold">{{answer.TITULO}}</span>
+          </div>
+        </div>
+  
+        <div class="row mx-5 mt-3">
+          <div class="col">
+  
+  
+            <div class="row">
+              <div class="col-6">
+                <img src="{{answer.IMAGEN}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+              </div>
+  
+              <div class="col-6 ">
+  
+  
+                <div class="row">
+                
+                  
+                  <span class="fs-4 fw-bold">
+                    <fa-icon [icon]="['fas', 'dollar']"></fa-icon> {{answer.PRECIO}}
+                  </span>
+                </div>
+  
+  
+                <div class="row">
+                  <span class="">
+                    <fa-icon [icon]="['fas', 'home']"></fa-icon> Area: {{answer.AREA}} 
+                  </span>
+                </div>
+  
+                <div class="row">
+                  <span class="">
+                    <fa-icon [icon]="['fas', 'door-closed']"></fa-icon> Habitaciones: {{answer.HABITACIONES}} 
+                  </span>
+                </div>
+  
+                <div class="row">
+                  <span class="">
+                    <fa-icon [icon]="['fas', 'globe']"></fa-icon> Url: <a href="{{answer.LINK}} "> {{answer.LINK}} </a> 
+                  </span>
+                </div>
+  
+              </div>
+              
+              <div class="divider mt-5 mb-3"></div>
+  
+  
+              <div class="row my-5">
+                <div class="col-12 text-center">
+                  <span>{{answer.DESCRIPCION}}</span>
+                  
+                </div>
+              </div>
+  
+  
+              <div class="divider mt-3"></div>
+              
+            </div> 
+  
+          </div>
+  
+  
+        </div>
+      </ng-container>
+      
+  
+    </div>
+  
+    
+  <app-footer></app-footer>

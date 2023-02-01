@@ -2,10 +2,11 @@ require 'open-uri'
 require 'nokogiri'
 require 'csv'
 
+CSV.open('inmobiliaria.csv', 'w') { |file| file.truncate(0) }
 CSV.open('inmobiliaria.csv', 'wb') do |csv|
   csv << %w[TITULO PRECIO IMAGEN DESCRIPCION AREA HABITACIONES LINK]
-  conf = 0; pagina = 1
-  while conf < 100
+  conf = 0
+  while conf < 385
     puts 'Scrapeando'
     link = 'https://inmuebles.mercadolibre.com.ec/casas/'
     confiesaloHTML = open(link)
@@ -18,7 +19,7 @@ CSV.open('inmobiliaria.csv', 'wb') do |csv|
 
       price = header.css('.ui-search-item__group--price').css('span').css('span.price-tag-text-sr-only').inner_text[0..-1].split(' ')[0]
 
-      imagen = inmuebles.css('div div.andes-card').css('a.ui-search-result__image').css('a div div div div img').attr('src')
+      imagen = inmuebles.css('div div.andes-card').css('div.ui-search-result__image').css('div.slick-slide').css('img.ui-search-result-image__element').attr('src')
 
       link = inmuebles.css('div div.andes-card').css('a.ui-search-result__content').attr('href')
 
@@ -31,7 +32,7 @@ CSV.open('inmobiliaria.csv', 'wb') do |csv|
       csv << [titulo.to_s, price.to_s, imagen.to_s, ubicacion.to_s, extension.to_s, habs.to_s, link.to_s]
       conf += 1
     end
-    pagina += 1
   end
   puts 'Fin de Extracción'
 end
+
